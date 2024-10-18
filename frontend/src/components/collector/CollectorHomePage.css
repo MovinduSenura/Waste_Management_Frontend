@@ -1,15 +1,54 @@
-.secdiv{
-    @apply bg-orange-700
+body{
+    overflow: hidden;
 }
 
-@media screen and (max-width: 390px) and (max-height: 844px) {
+.secdiv{
+    @apply bg-[#2F5944] h-[300px]
+}
+
+.thirddiv{
+    @apply bg-[#ffffff] mt-[100px] absolute w-[100%] h-[100%] rounded-xl
+}
+
+.content{
+    @apply ml-[30px] mt-[20px] flex
+}
+
+.content2{
+    @apply ml-[30px] mt-[50px] flex
+}
+
+.content3{
+    @apply ml-[30px] mt-[50px] flex
+}
+
+.p1{
+    @apply ml-[10px]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media screen and (max-width: 390px) and (max-height: 844px) {
     .secdiv{
-        @apply bg-blue-700
+        @apply bg-[#2F5944] h-[100px]
+    }
+
+    .thirddiv{
+        @apply bg-[#ffffff] mt-[60px] absolute w-[100%] h-[100%] rounded-xl
     }
 }
 
 @media screen and (max-width: 1280px) and (max-height: 800px) {
     .secdiv{
-        @apply bg-blue-700
+        @apply bg-[#2F5944] h-[100px]
     }
-}
+} */

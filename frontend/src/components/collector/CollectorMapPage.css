@@ -1,0 +1,27 @@
+/* Full container */
+.map-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height for the page */
+  }
+  
+  /* Map section takes the first half */
+  .map-section {
+    /* flex: 1; */
+    height: 50vh;
+    width: 100%; /* Full width */
+  }
+  
+  /* Map styling */
+  .map-element {
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .map-section {
+      height: 60vh; /* Adjust height for mobile */
+    }
+  }
+  

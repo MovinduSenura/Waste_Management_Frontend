@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Login.css'
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
+// import { jwtDecode } from 'jwt-decode';
 
 export default function Login() {
 
@@ -79,16 +79,16 @@ export default function Login() {
                       <p className="text-red-500 my-3 mt-2">{error}</p>
                       <button
                           type="submit"
-                          className="w-full h-12 font-semibold text-lg px-5 py-2 rounded-md bg-gray-800 text-white hover:bg-gray-600 transition-all mb-2 mt-7">
+                          className="w-full h-12 font-semibold text-lg px-5 py-2 rounded-md bg-[#2F5944] text-white hover:bg-[#214131] transition-all mb-2 mt-7">
                           Login
                       </button>
-                      <p className='text-right'>No account yet? <a className='text-blue-600' href="/register">Register here</a></p>
+                      <p className='text-right'>No account yet? <a className='text-[#2F5944]' href="/register">Register here</a></p>
                   </form>
               </div>
           </div>
   
           {/* Right Side - Background Image */}
-          <div className="hidden md:block md:w-2/3 bg-cover bg-right" style={{ backgroundImage: `url(${BgImg})` }}>
+          <div className="hidden md:block md:w-2/3 bg-cover bg-right">
               {/* Optional content inside the illustration */}
           </div> 
       </div>
