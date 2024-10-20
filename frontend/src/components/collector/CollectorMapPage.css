@@ -21,7 +21,7 @@
   /* Responsive styles */
   @media (max-width: 768px) {
     .map-section {
-      height: 60vh; /* Adjust height for mobile */
+      height: 55vh; /* Adjust height for mobile */
     }
   }
   

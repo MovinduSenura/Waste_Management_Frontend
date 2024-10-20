@@ -4,13 +4,17 @@ import Route from "../../images/route.svg";
 import MainImg from "../../images/mainimg.png";
 // import ProfileImg from '../../images/profile.png';
 import Recycle from "../../images/recycle.png";
+import { useNavigate } from "react-router-dom";
 
 export default function CollectorHomePage() {
+  
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Header Section */}
       <div className="bg-[#2F5944] p-6 relative h-[180px]">
-        <div className="flex justify-between mt-10">
+        <div className="flex justify-between mt-7">
           <div>
             <p className="text-white text-sm">Welcome Back,</p>
             <h1 className="text-white text-2xl font-semibold">Kumara C.</h1>
@@ -23,7 +27,7 @@ export default function CollectorHomePage() {
         </div>
       </div>
 
-    <div className="bg-white rounded-t-3xl z-10 -mt-4">
+    <div className="bg-white rounded-t-[35px] z-10 -mt-7">
       {/* Stats Section */}
       <div className="flex justify-around mt-5 mb-0 px-4 py-6">
         <div className="bg-white p-4 rounded-lg w-[55%] text-center inline-flex">
@@ -63,7 +67,7 @@ export default function CollectorHomePage() {
 
       {/* Bottom Navigation */}
       <div className="mt-auto bg-neutral-100 p-2 m-3 mb-6 flex justify-around rounded-full shadow-lg">
-        <button>
+        <button onClick={() => navigate("/")}>
           <svg
             width="20"
             height="20"
@@ -93,7 +97,7 @@ export default function CollectorHomePage() {
             />
           </svg>
         </button>
-        <button>
+        <button onClick={() => navigate("/collectormappage")}>
           <svg
             width="24"
             height="24"
