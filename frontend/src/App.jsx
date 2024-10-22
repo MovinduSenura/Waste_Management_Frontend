@@ -22,6 +22,11 @@ import SpecialReqCreatePage from './components/requests/SpecialReqCreatePage'
 import UserCreatePage from './components/user/UserCreatePage'
 import WasteCollectionCreatePage from './components/collections/WasteCollectionCreatePage'
 
+
+import Dashboard from './components/admin/Dashboard'
+import Collections from './components/admin/Collections'
+import Feedbacks from './components/feedback/feedbacks'
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -42,6 +47,10 @@ export default function App() {
         <Route path="/userwastelevelpage" element={<UserWasteLevelPage />} />
         <Route path="/userquickschedulepage" element={<UserQuickSchedulePage />} />
         <Route path="/userviewschedulepage" element={<UserViewSchedulePage />} />
+        
+        <Route path="/admindash" element={<Dashboard />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/feedbacks" element={<Feedbacks />} />
 
         {/* Feedbacks */}
         <Route path="/feedbackaddpage" element={<FeedbackCreatePage />} />

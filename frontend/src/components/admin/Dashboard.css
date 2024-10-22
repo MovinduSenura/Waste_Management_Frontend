@@ -1,0 +1,124 @@
+.div1 {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+  height: 100vh;
+}
+
+.div2 {
+  background-color: white;
+  padding: 30px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.logoDiv {
+}
+
+.buttonContainer {
+  /* background-color: turquoise; */
+  padding: 40px 0px;
+  gap: 20px;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #5d7285;
+  font-weight: 600;
+  background-color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #e9f5fe;
+}
+
+.icon {
+  width: 40px;
+}
+
+.button p {
+  font-size: 14px;
+}
+
+.logoutbtndiv {
+  position: absolute;
+  width: 240px;
+  bottom: 20px;
+  background-color: #2f5944;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.div3 {
+  /* background-color: blueviolet; */
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px 30px 0px;
+}
+
+.topcards {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  /* background-color: red; */
+  gap: 20px;
+}
+
+.detailcardBtns {
+  /* background-color: yellow; */
+  /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.detailBtn {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.detailBtn:hover {
+  cursor: pointer;
+  background-color: #e9f5fe;
+}
+
+.chartdiv {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pie-chart {
+  width: 200px;
+  height: 200px;
+  background: conic-gradient(
+    #4caf50 0% 40%,
+    /* Green slice - 40% */ #ffeb3b 40% 65%,
+    /* Yellow slice - 25% */ #f44336 65% 100% /* Red slice - 35% */
+  );
+  border-radius: 50%;
+}
+
+.mapContainer{
+  padding: 10px;
+}
