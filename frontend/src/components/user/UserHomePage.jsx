@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./UserHomePage.css";
 import { useNavigate } from "react-router-dom";
 import Residenthome from "../../images/residenthome.png";
@@ -6,9 +6,30 @@ import Recycle from "../../images/recycle.png";
 import Truck from "../../images/truck.png";
 import RecycleGreen from "../../images/recyclegreen.png";
 import Money from "../../images/money.png";
+import axios from "axios";
+import { MdFeedback } from "react-icons/md";
+import { FaTruckMoving } from "react-icons/fa6";
+import { RiRecycleFill } from "react-icons/ri";
 
 export default function UserHomePage() {
+
   const navigate = useNavigate();
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/WasteManagement/users");
+        setUsers(response.data)
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchUsers();
+  }, [])
 
   return (
     <div className="bg-[#2F5944] h-[100vh] relative">
@@ -22,7 +43,9 @@ export default function UserHomePage() {
       />
       <div className="namedetails absolute top-[5%] left-[8%] text-white">
         <small className="welcome text-[14px]">welcome</small>
-        <h1 className="usename text-[24px] font-[600]">Aashani S.</h1>
+        {users.length > 0 && (
+          <h1 className="text-white text-2xl font-semibold">{users[3].name}</h1>
+        )}
       </div>
       <div className="bg-gray-100 bg-opacity-80 p-4 rounded-2xl w-[86%] border border-black absolute top-[40%] ml-[7%] mr-[7%]">
         <p className="font-semibold ml-4">My Waste Pick Up</p>
@@ -30,23 +53,23 @@ export default function UserHomePage() {
         <img src={Recycle} className="-mt-[40px] ml-[220px]" />
       </div>
       <div className="w-fit ml-auto mr-auto relative bottom-[230px] flex space-x-2">
-        <div className="px-4 py-3 bg-white rounded-xl border-solid border-2">
-          <img className="ml-auto mr-auto" src={Truck} />
-          <p>Pick Waste</p>
+        <div className="px-4 py-3 bg-white rounded-xl border-solid border-2" onClick={() => navigate("/specialrequestaddpage")}>
+          <p className="ml-auto mr-auto mt-2"><FaTruckMoving className="size-12 mx-auto text-emerald-800" /></p>
+          <p >Pick  </p>
+        </div>
+        <div className="px-4 py-3 bg-white rounded-xl border-solid border-2" onClick={() => {navigate('/feedbackaddpage')}}>
+          <p className="ml-auto mr-auto mt-2"><MdFeedback className="size-10 mx-auto text-emerald-800" /></p>
+          <p className="mt-2" >Give Feedback</p>
         </div>
         <div className="px-4 py-3 bg-white rounded-xl border-solid border-2">
-          <img className="ml-auto mr-auto mt-2" src={Money} />
-          <p className="mt-2">Get Money</p>
-        </div>
-        <div className="px-4 py-3 bg-white rounded-xl border-solid border-2">
-          <img className="ml-auto mr-auto" src={RecycleGreen} />
+          <p className="ml-auto mr-auto mt-2"><RiRecycleFill className="size-12 mx-auto text-emerald-800" /></p>
           <p>Recycling</p>
         </div>
       </div>
 
       {/* Bottom Navigation */}
       <div className=" h-[60px] relative bottom-[200px] bg-neutral-100 p-2 m-3 mb-6 flex justify-around rounded-full shadow-lg">
-        <button onClick={() => navigate("/")}>
+        <button onClick={() => navigate("/userhomepage")}>
           <svg
             width="20"
             height="20"
@@ -60,7 +83,7 @@ export default function UserHomePage() {
             />
           </svg>
         </button>
-        <button>
+        <button onClick={() => { navigate('/userwastelevelpage')}}>
           <svg
             width="24"
             height="24"

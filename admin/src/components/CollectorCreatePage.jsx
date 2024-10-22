@@ -48,8 +48,6 @@ export default function CollectorCreatePage() {
       await axios.post('http://localhost:8080/WasteManagement/collectionRoutes?action=create', formData);
       alert('Route added successfully!');
       fetchRoutes(); // Refresh routes list after adding a new route
-
-      navigate('/admindash')
     } catch (error) {
       console.log(error);
       setError('Failed to add route.');
@@ -61,7 +59,7 @@ export default function CollectorCreatePage() {
       <div className="w-full p-10 flex justify-center items-center bg-white shadow-lg">
         <div className="w-full max-w-md">
           <div className='bg-red-00 inline-flex justify-between w-full'>
-            <button className="mb-6" onClick={() => navigate('/admindash')}>
+            <button className="mb-6" onClick={() => navigate('/')}>
               <IoMdArrowRoundBack className="text-emerald-800 size-7" />
             </button>
             <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Add Collection Route</h2>

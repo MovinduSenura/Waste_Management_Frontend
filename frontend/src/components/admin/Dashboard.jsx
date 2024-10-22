@@ -3,18 +3,18 @@ import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css"; // Ensure Leaflet's styles are applied
-import Logo from "../images/adminLogo.png";
-import Icon1 from "../images/icon1.svg";
-import Icon2 from "../images/icon2.svg";
-import Icon3 from "../images/icon3.svg";
-import Icon4 from "../images/icon4.svg";
-import Icon5 from "../images/icon5.svg";
-import Icon6 from "../images/icon6.svg";
-import Icon7 from "../images/icon7.svg";
-import Icon8 from "../images/icon8.svg";
-import Icon9 from "../images/icon9.svg";
-import Icon10 from "../images/icon10.svg";
-import Logout from "../images/logout.svg";
+import Logo from "../../images/adminLogo.png";
+import Icon1 from "../../images/icon1.svg";
+import Icon2 from "../../images/icon2.svg";
+import Icon3 from "../../images/icon3.svg";
+import Icon4 from "../../images/icon4.svg";
+import Icon5 from "../../images/icon5.svg";
+import Icon6 from "../../images/icon6.svg";
+import Icon7 from "../../images/icon7.svg";
+import Icon8 from "../../images/icon8.svg";
+import Icon9 from "../../images/icon9.svg";
+import Icon10 from "../../images/icon10.svg";
+import Logout from "../../images/logout.svg";
 
 export default function dashboard() {
   
@@ -78,7 +78,7 @@ export default function dashboard() {
             <button className="detailBtn" onClick={() => {navigate('/collectoraddpage')}}>Collectin Routes</button>
             <button className="detailBtn" onClick={() => {navigate('/scheduleaddpage')}}>Collectin Schedule</button>
             <button className="detailBtn" onClick={() => {navigate('/collections')}}>View Waste Collection</button>
-            <button className="detailBtn">View Feedbacks</button>
+            <button className="detailBtn" onClick={() => {navigate('/feedbacks')}}>View Feedbacks</button>
           </div>
           <div className="chartdiv">
             <p>Garbage Bins</p>

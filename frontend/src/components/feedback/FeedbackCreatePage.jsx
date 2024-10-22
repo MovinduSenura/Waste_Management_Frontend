@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export default function FeedbackCreatePage() {
+
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userId: '',
     feedbackType: '',
     message: '',
     responseStatus: ''
   });
+
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -25,8 +30,11 @@ export default function FeedbackCreatePage() {
       return;
     }
     try {
-      await axios.post('http://localhost:8000/feedback', formData);
+      await axios.post('http://localhost:8080/WasteManagement/feedbacks?action=create', formData);
       alert('Feedback submitted successfully!');
+
+
+      navigate('/userHomepage')
     } catch (error) {
       console.log(error);
       setError('Failed to submit feedback.');
@@ -34,10 +42,14 @@ export default function FeedbackCreatePage() {
   };
 
   return (
-    <div className="min-h-screen flex bg-gradient-to-r from-blue-50 to-white">
-      <div className="w-full p-10 flex flex-col items-center bg-white shadow-lg">
-        <div className="w-full max-w-md">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Submit Feedback</h2>
+    <div className="min-h-screen bg-white flex items-center">
+      <div className="w-full h-full p-10 flex flex-col items-center">
+        <div className="w-full max-w-md"><div className='bg-red-00 inline-flex justify-between w-full'>
+          <button className="mb-6" onClick={() => navigate('/userhomepage')}>
+            <IoMdArrowRoundBack className="text-emerald-800 size-7" />
+          </button>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Submit Feedback</h2>
+        </div>
           <form onSubmit={handleSubmit}>
             <div>
               <input

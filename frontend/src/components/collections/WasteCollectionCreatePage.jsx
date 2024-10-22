@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// CSS removed as per your instructions
 
 export default function WasteCollectionCreatePage() {
   const [formData, setFormData] = useState({
@@ -9,6 +8,7 @@ export default function WasteCollectionCreatePage() {
     wasteType: '',
     weight: ''
   });
+
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -26,7 +26,7 @@ export default function WasteCollectionCreatePage() {
       return;
     }
     try {
-      await axios.post('http://localhost:8000/wastecollection', formData);
+      await axios.post('http://localhost:8080/WasteManagement/collections?action=create', formData);
       alert('Waste collection recorded successfully!');
     } catch (error) {
       console.log(error);

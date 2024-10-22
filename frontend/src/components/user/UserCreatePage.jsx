@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// CSS removed as per your instructions
 
 export default function UserCreatePage() {
   const [formData, setFormData] = useState({
@@ -12,6 +11,7 @@ export default function UserCreatePage() {
     username: '',
     password: ''
   });
+
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -29,7 +29,7 @@ export default function UserCreatePage() {
       return;
     }
     try {
-      await axios.post('http://localhost:8000/users', formData);
+      await axios.post('http://localhost:8080/WasteManagement/users?action=create', formData);
       alert('User created successfully!');
     } catch (error) {
       console.log(error);

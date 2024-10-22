@@ -1,105 +1,50 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-// CSS removed as per your instructions
+import React from 'react';
+import { IoMdArrowRoundBack } from "react-icons/io"; // Tailwind's compiled output
+import { useNavigate } from 'react-router-dom';
 
-export default function PaymentsCreatePage() {
-  const [formData, setFormData] = useState({
-    userId: '',
-    amount: '',
-    paymentDate: '',
-    paymentMethod: '',
-    paymentStatus: ''
-  });
-  const [error, setError] = useState('');
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-    setError('');
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.userId || !formData.amount || !formData.paymentDate || !formData.paymentMethod || !formData.paymentStatus) {
-      setError('All fields are required.');
-      return;
-    }
-    try {
-      await axios.post('http://localhost:8000/payments', formData);
-      alert('Payment recorded successfully!');
-    } catch (error) {
-      console.log(error);
-      setError('Failed to record payment.');
-    }
-  };
-
+const PaymentsCreatePage = () => {
+  
+  const navigate = useNavigate();
   return (
-    <div className="min-h-screen flex bg-gradient-to-r from-blue-50 to-white">
-      <div className="w-full p-10 flex flex-col items-center bg-white shadow-lg">
-        <div className="w-full max-w-md">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Record Payment</h2>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <input
-                type="text"
-                name="userId"
-                placeholder="Enter user ID"
-                onChange={handleChange}
-                value={formData.userId}
-                className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
-              />
+    <div className="flex flex-col h-screen">
+      <header className="p-5 text-center inline-flex justify-between mx-2">
+        <button className="mt-8" onClick={() => navigate('/scheduleaddpage')}><IoMdArrowRoundBack className="text-emerald-800 size-7" /></button>
+        <h1 className="text-3xl font-bold mt-7 text-emerald-800">Payment Page</h1>
+      </header>
+      <div className="flex absolute bottom-32 p-5 overflow-y-auto">
+        <div className="max-w-lg mx-auto mt-auto bg-white p-8 shadow rounded-3xl border-4 border-emerald-800">
+          <h2 className="text-2xl font-semibold mb-6">Complete Your Payment</h2>
+          <form>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Cardholder Name</label>
+              <input type="text" className="w-full p-3 border border-gray-300 rounded-xl" placeholder="John Doe" />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+              <input type="text" className="w-full p-3 border border-gray-300 rounded-xl" placeholder="1234 5678 9101 1121" />
+            </div>
+            <div className="mb-4 grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
+                <input type="text" className="w-full p-3 border border-gray-300 rounded-xl" placeholder="MM/YY" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-g  ray-700 mb-2">CVC</label>
+                <input type="text" className="w-full p-3 border border-gray-300 rounded-xl" placeholder="123" />
+              </div>
             </div>
             <div>
-              <input
-                type="text"
-                name="amount"
-                placeholder="Enter amount"
-                onChange={handleChange}
-                value={formData.amount}
-                className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
-              />
+              <label className="block text-sm font-medium text-g mb-2">Remarks</label>
+              <textarea name="remarks" id="remarks" rows={5} className='border border-gray-300 w-full rounded-xl'/>
             </div>
-            <div>
-              <input
-                type="date"
-                name="paymentDate"
-                onChange={handleChange}
-                value={formData.paymentDate}
-                className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                name="paymentMethod"
-                placeholder="Enter payment method"
-                onChange={handleChange}
-                value={formData.paymentMethod}
-                className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                name="paymentStatus"
-                placeholder="Enter payment status"
-                onChange={handleChange}
-                value={formData.paymentStatus}
-                className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
-              />
-            </div>
-            <p className="text-red-500 my-3">{error}</p>
-            <button
-              type="submit"
-              className="w-full h-12 font-semibold text-lg px-5 py-2 rounded-md bg-[#2F5944] text-white hover:bg-[#214131] transition-all mb-2 mt-7"
-            >
-              Record Payment
-            </button>
           </form>
         </div>
       </div>
+      <>
+        <button className='bg-emerald-800 mt-auto mb-10 text-white text-xl font-bold py-4 px-8 mx-10 rounded-full'>Confirm Payment</button>
+      </>
     </div>
   );
-}
+};
+
+export default PaymentsCreatePage;

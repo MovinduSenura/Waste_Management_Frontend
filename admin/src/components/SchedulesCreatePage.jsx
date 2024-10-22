@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { IoMdArrowRoundBack } from "react-icons/io";
+// CSS removed as per your instructions
 
-export default function SpecialReqCreatePage() {
-  
+export default function SchedulesCreatePage() {
+
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userId: '',
-    requestDate: '',
+    pickupDate: '',
     wasteType: '',
-    requestedPickupDate: '',
-    additionalDetails: '',
-    status: ''
+    collectionArea: ''
   });
-
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -27,19 +26,18 @@ export default function SpecialReqCreatePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.userId || !formData.requestDate || !formData.wasteType || !formData.requestedPickupDate || !formData.status) {
+    if (!formData.userId || !formData.pickupDate || !formData.wasteType || !formData.collectionArea) {
       setError('All fields are required.');
       return;
     }
     try {
-      await axios.post('http://localhost:8080/WasteManagement/specialRequests?action=create', formData);
-      alert('Special request submitted successfully!');
+      await axios.post('http://localhost:8080/WasteManagement/schedules?action=create', formData);
+      alert('Schedule created successfully!');
 
-      
-      navigate('/paymentaddpage')
+      navigate('/')
     } catch (error) {
       console.log(error);
-      setError('Failed to submit special request.');
+      setError('Failed to create schedule.');
     }
   };
 
@@ -48,10 +46,10 @@ export default function SpecialReqCreatePage() {
       <div className="w-full h-full p-10 flex flex-col items-center">
         <div className="w-full max-w-md">
           <div className='bg-red-00 inline-flex justify-between w-full'>
-            <button className="mb-6" onClick={() => navigate('/userhomepage')}>
+            <button className="mb-6" onClick={() => navigate('/')}>
               <IoMdArrowRoundBack className="text-emerald-800 size-7" />
             </button>
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Submit Special Request</h2>
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Create Schedule</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <div>
@@ -67,9 +65,9 @@ export default function SpecialReqCreatePage() {
             <div>
               <input
                 type="date"
-                name="requestDate"
+                name="pickupDate"
                 onChange={handleChange}
-                value={formData.requestDate}
+                value={formData.pickupDate}
                 className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
               />
             </div>
@@ -85,30 +83,11 @@ export default function SpecialReqCreatePage() {
             </div>
             <div>
               <input
-                type="date"
-                name="requestedPickupDate"
-                onChange={handleChange}
-                value={formData.requestedPickupDate}
-                className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
-              />
-            </div>
-            <div>
-              <input
                 type="text"
-                name="additionalDetails"
-                placeholder="Enter additional details"
+                name="collectionArea"
+                placeholder="Enter collection area"
                 onChange={handleChange}
-                value={formData.additionalDetails}
-                className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                name="status"
-                placeholder="Enter status"
-                onChange={handleChange}
-                value={formData.status}
+                value={formData.collectionArea}
                 className="block w-full rounded-md h-10 outline-0 ps-3 mb-5 bg-gray-200"
               />
             </div>
@@ -117,7 +96,7 @@ export default function SpecialReqCreatePage() {
               type="submit"
               className="w-full h-12 font-semibold text-lg px-5 py-2 rounded-md bg-[#2F5944] text-white hover:bg-[#214131] transition-all mb-2 mt-7"
             >
-              Submit Special Request
+              Create Schedule
             </button>
           </form>
         </div>
